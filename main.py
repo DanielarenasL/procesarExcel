@@ -190,7 +190,7 @@ def procesar_excel(input_file):
 
         archivo['Registros_Adicionales'] = archivo.apply(lambda row: determinar_registros_adicionales(row['Hora de Registro'], row['Entry'], row['Exit'], row['LaunchEntry'], row['LaunchExit']) if row['Hora de Registro'] else 'N/A', axis=1)
        
-        json_resultado = archivo.to_json(orient='records')
+        json_resultado = archivo.to_dict(orient='records')
         return json_resultado
     
     except FileNotFoundError as e:
@@ -214,7 +214,7 @@ async def procesar_archivo_excel(file: UploadFile = File(...)):
         json_resultado = procesar_excel(temp_file_path)
 
 
-        return json_resultado
+        return {"status": "success", "data": json_resultado}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"ocurrio un error: {str(e)}")
     finally:
