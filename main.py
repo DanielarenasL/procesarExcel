@@ -190,7 +190,7 @@ def procesar_excel(input_file):
 
         archivo['Registros_Adicionales'] = archivo.apply(lambda row: determinar_registros_adicionales(row['Hora de Registro'], row['Entry'], row['Exit'], row['LaunchEntry'], row['LaunchExit']) if row['Hora de Registro'] else 'N/A', axis=1)
        
-        json_resultado = archivo.to_json(orient='records', date_format='iso')
+        json_resultado = archivo.to_json(orient='records')
         return json_resultado
     
     except FileNotFoundError as e:
