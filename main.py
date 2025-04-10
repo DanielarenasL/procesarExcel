@@ -10,7 +10,7 @@ def procesar_excel(input_file):
     try:
         
         # Leer archivo Excel
-        archivo = pd.read_excel(input_file, engine='openpyxl', header=1)
+        archivo = pd.read_excel(input_file, engine='xlrd', header=1)
         
         # Eliminar la fila que contiene "Asistencia Diaria"
         archivo = archivo[~archivo.iloc[:, 0].astype(str).str.contains('Asistencia Diaria', na=False)]
