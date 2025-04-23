@@ -106,8 +106,6 @@ def procesar_excel(input_file):
                 return 1
             elif (((hora_dt.hour == 6 and hora_dt.minute >= 23) or (hora_dt.hour == 7 and hora_dt.minute <= 45)) and ((salida_dt.hour == 15 and salida_dt.minute >= 20 and es_viernes) or salida_dt.hour == 17 or salida_dt.hour == 18 or (salida_dt.hour == 16 and salida_dt.minute <= 30 and es_miercoles))):
                 return 19
-            elif ((hora_dt.hour == 7 or (hora_dt.hour == 6 and hora_dt.minute >= 40) ) and ((salida_dt.hour <= 17 and (salida_dt.hour >= 13 and salida_dt.minute >= 40)) or (salida_dt.hour == 16 and salida_dt.minute <= 30))):
-                return 6
             elif (hora_dt.hour == 13 and hora_dt.minute >= 10) or (hora_dt.hour == 14 and hora_dt.minute <= 50):
                 return 2
             else:
